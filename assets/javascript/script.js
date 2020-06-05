@@ -75,9 +75,14 @@ function counterStarts(sec){
   }, 1000);
 }
 
-counterStarts(59);
+counterStarts(119);
 
-function updateTimerDisplay(secondsRemaining) {
+function updateTimerDisplay(totalSecondsRemaining) {
+  minutesEl.innerText = Math.floor(totalSecondsRemaining / 60);
+  var secondsRemaining = totalSecondsRemaining % 60;
+  if (secondsRemaining < 10) {
+    secondsRemaining = "0" + secondsRemaining;
+  }
   secondsEl.innerText = secondsRemaining;
 }
 
