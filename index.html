@@ -11,7 +11,7 @@
     <!-- start button -->
     <div id="start">Start Quiz!</div>
     <!-- question div -->
-    <div id="quiz" style="display: none;">
+    <div id="quiz" style="display: block;">
       <!-- question image -->
       <div id="qImage"><img src="#" alt="question img">
       
@@ -36,13 +36,16 @@
           <div class="choice" id="B" onclick="checkAnswer('B')">B</div>
           <div class="choice" id="C" onclick="checkAnswer('C')">C</div>
         </div>
-        
+        <!-- show quiz progress -->
+        <div id="progress">
+          <div class="prog"></div>
+        </div>
 
 
       </div>
     </div>
     <!-- score container -->
-    <div id="scoreContainer" style="display: none;"></div>
+    <div id="scoreContainer" style="display: block;"></div>
 
     <script type="text/javascript" src="./assets/javascript/script.js"></script>
   </body>
