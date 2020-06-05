@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript Quiz</title>
+    <!-- bootstrap link -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+
+  <body>
+    <main>
+      <!-- start quiz container -->
+      <div class="container" style="border: 5px solid black;">
+        <nav class="navbar navbar-light bg-primary" id="startQuiz">
+          <a class="navbar-brand" href="#">Start Quiz</a>
+        </nav>
+      </div>
+      <!-- question and answer container-->
+      <div class="container" style="border: 5px solid black;">
+        <div id="quiz" style="display: block;">
+          <!-- question image -->
+          <div id="questionImage">
+            <img
+              src="./assets/images/lizpf2.jpg"
+              alt="question img"
+              style="width: 200px;"
+            />
+          </div>
+          <!-- question div -->
+          <div>
+            <p id="question">Question</p>
+          </div>
+          <!-- timer div -->
+          <div id="timer" style="border: 5px solid black;">
+            <!-- counter -->
+            <span id="minutes">2</span>
+            <span> : </span>
+            <span id="seconds">00</span>
+          </div>
+          <!-- answer choices -->
+          <div id="choices" style="border: 5px solid black;">
+            <div class="choice" id="A" onclick="checkAnswer('A')">A</div>
+            <div class="choice" id="B" onclick="checkAnswer('B')">B</div>
+            <div class="choice" id="C" onclick="checkAnswer('C')">C</div>
+          </div>
+          <!-- show quiz progress -->
+          <div id="progress" style="border: 5px solid black;>
+            <div class="prog"></div>
+          </div>
+        </div>
+      </div>
+      <!-- score container -->
+      <div id="scoreContainer" style="display: block;"></div>
+    </main>
+
+    <!-- js links -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript" src="./assets/javascript/script.js"></script>
+  </body>
+</html>
