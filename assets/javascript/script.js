@@ -1,4 +1,4 @@
-var start = document.getElementById('start');
+var startQuizEl = document.getElementById('startQuiz');
 var quiz = document.getElementById('quiz');
 var qImg = document.getElementById('qImage');
 var question = document.getElementById('question');
@@ -54,6 +54,7 @@ function renderQuestion(){
   choiceC.innerHTML = q.choiceC;
   runningQuestionIndex ++;
 }
+
 
 renderQuestion();
 console.log('questioned rendered');
