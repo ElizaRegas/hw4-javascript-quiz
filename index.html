@@ -38,24 +38,20 @@
             <p id="question">Question</p>
           </div>
           <!-- timer div -->
-          <div id="timer">
+          <div id="timer" style="border: 5px solid black;">
             <!-- counter -->
-            <div id="counter">
-              10
-            </div>
-            <!-- background time gauge -->
-            <div id="btimeGauge"></div>
-            <!-- time gauge -->
-            <div id="timeGauge"></div>
-            <!-- answer choices -->
-            <div id="choices">
-              <div class="choice" id="A" onclick="checkAnswer('A')">A</div>
-              <div class="choice" id="B" onclick="checkAnswer('B')">B</div>
-              <div class="choice" id="C" onclick="checkAnswer('C')">C</div>
-            </div>
+            <span id="minutes">2</span>
+            <span> : </span>
+            <span id="seconds">00</span>
+          </div>
+          <!-- answer choices -->
+          <div id="choices" style="border: 5px solid black;">
+            <div class="choice" id="A" onclick="checkAnswer('A')">A</div>
+            <div class="choice" id="B" onclick="checkAnswer('B')">B</div>
+            <div class="choice" id="C" onclick="checkAnswer('C')">C</div>
           </div>
           <!-- show quiz progress -->
-          <div id="progress">
+          <div id="progress" style="border: 5px solid black;>
             <div class="prog"></div>
           </div>
         </div>
