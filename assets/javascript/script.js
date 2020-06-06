@@ -12,6 +12,7 @@ var scoreContainerEl = document.getElementById("scoreContainer");
 var minutesEl = document.getElementById("minutes");
 var secondsEl = document.getElementById("seconds");
 var guessAnswer = document.getElementsByClassName("choice");
+var gameOverModalEl = document.getElementById("gameOverModal");
 
 var questionsObj = [
   {
@@ -51,6 +52,7 @@ startQuizEl.addEventListener("click", displayQuestion);
 // display question
 function displayQuestion() {
   // hide the start quiz div
+  counterStarts(5);
   startQuizEl.style.display = "none";
   var quest = questionsObj[currentQuestionIndex];
   questionImageEl.innerHTML = "<img src=" + quest.imageSrc + " style='width: 200px;'>";
@@ -70,12 +72,12 @@ function counterStarts(sec){
     updateTimerDisplay(secondsRemaining);
     if (secondsRemaining === 0) {
       clearInterval(countDownTimer);
+      endGame();
+      console.log("game over");
     } 
     secondsRemaining--;
   }, 1000);
 }
-
-counterStarts(119);
 
 function updateTimerDisplay(totalSecondsRemaining) {
   minutesEl.innerText = Math.floor(totalSecondsRemaining / 60);
@@ -86,11 +88,13 @@ function updateTimerDisplay(totalSecondsRemaining) {
   secondsEl.innerText = secondsRemaining;
 }
 
+function endGame() {
+  quizEl.style.display = "none";
+  gameOverModalEl.style.display = "block";
+}
 
 
-// The counter starts
 // The counter can be paused, but then detracts 5 seconds
-// There is a 120 second max on timer
 // There are 25 questions
 // When the timer runs out, the quiz ends
 // When a question is answered-
