@@ -74,13 +74,26 @@ function displayQuestion() {
 function checkAnswer(e) {
   if (e.target.className === "choice") {
     if (e.target.id === questionsArr[currentQuestionIndex].correct){
-      console.log("correct");
+      hideQuizDivs();
+      correctAnswerEl.style.display = "block";
+      setInterval(returnDisplay, 1500);
     } else {
-      console.log("incorrect");
+      hideQuizDivs();
+      incorrectAnswerEl.style.display = "block";
+      setInterval(returnDisplay, 1500);
     }
     displayQuestion();
   }
+}
 
+function returnDisplay() {
+  quizEl.style.display = "block";
+  correctAnswerEl.style.display = "none";
+  incorrectAnswerEl.style.display = "none";
+}
+
+function hideQuizDivs() {
+  quizEl.style.display = "none";
 }
 //starting the clock
 function counterStarts(sec){
@@ -115,8 +128,6 @@ function endGame() {
 // There are 25 questions
 // When a question is answered-
 // the counter pauses
-// accuracy is assessed
-// if correct, message is displayed
 // if incorrect, the timer subtracts 5 seconds and a message is displayed
 // scores are updated
 // the next question is displayed
