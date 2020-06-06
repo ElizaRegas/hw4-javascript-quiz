@@ -43,16 +43,20 @@ var questionsObj = [
 ];
 
 var lastQuestionIndex = questionsObj.length - 1;
-console.log(lastQuestionIndex);
 var currentQuestionIndex = 0;
 
 // starting the game by clicking on Start Quiz
-startQuizEl.addEventListener("click", displayQuestion);
+startQuizEl.addEventListener("click", startGame);
+
+// generates question and starts timer
+function startGame() {
+  displayQuestion();
+  counterStarts(119);
+}
 
 // display question
 function displayQuestion() {
   // hide the start quiz div
-  counterStarts(5);
   startQuizEl.style.display = "none";
   var quest = questionsObj[currentQuestionIndex];
   questionImageEl.innerHTML = "<img src=" + quest.imageSrc + " style='width: 200px;'>";
@@ -61,10 +65,8 @@ function displayQuestion() {
   choiceBEl.innerHTML = quest.choiceB;
   choiceCEl.innerHTML = quest.choiceC;
   currentQuestionIndex++;
-  console.log(currentQuestionIndex);
-  console.log("display question run");
 }
-
+//starting the clock
 function counterStarts(sec){
   var secondsRemaining = sec;
 
@@ -73,12 +75,11 @@ function counterStarts(sec){
     if (secondsRemaining === 0) {
       clearInterval(countDownTimer);
       endGame();
-      console.log("game over");
     } 
     secondsRemaining--;
   }, 1000);
 }
-
+// updating clock display in the dom
 function updateTimerDisplay(totalSecondsRemaining) {
   minutesEl.innerText = Math.floor(totalSecondsRemaining / 60);
   var secondsRemaining = totalSecondsRemaining % 60;
@@ -87,7 +88,7 @@ function updateTimerDisplay(totalSecondsRemaining) {
   }
   secondsEl.innerText = secondsRemaining;
 }
-
+// end game modal call
 function endGame() {
   quizEl.style.display = "none";
   gameOverModalEl.style.display = "block";
@@ -96,7 +97,6 @@ function endGame() {
 
 // The counter can be paused, but then detracts 5 seconds
 // There are 25 questions
-// When the timer runs out, the quiz ends
 // When a question is answered-
 // the counter pauses
 // accuracy is assessed
