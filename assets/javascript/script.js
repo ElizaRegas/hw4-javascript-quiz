@@ -13,8 +13,10 @@ var minutesEl = document.getElementById("minutes");
 var secondsEl = document.getElementById("seconds");
 var guessAnswer = document.getElementsByClassName("choice");
 var gameOverModalEl = document.getElementById("gameOverModal");
+var correctAnswerEl = document.getElementById("correct");
+var incorrectAnswerEl = document.getElementById("incorrect");
 
-var questionsObj = [
+var questionsArr = [
   {
     question: "Inside which HTML element do we put the JavaScript?",
     imageSrc: "./assets/images/lizpf2.jpg",
@@ -42,11 +44,12 @@ var questionsObj = [
   },
 ];
 
-var lastQuestionIndex = questionsObj.length - 1;
-var currentQuestionIndex = 0;
+var lastQuestionIndex = questionsArr.length - 1;
+var currentQuestionIndex = -1;
 
 // starting the game by clicking on Start Quiz
 startQuizEl.addEventListener("click", startGame);
+document.addEventListener("click", checkAnswer);
 
 // generates question and starts timer
 function startGame() {
@@ -56,15 +59,28 @@ function startGame() {
 
 // display question
 function displayQuestion() {
+  currentQuestionIndex++;
   // hide the start quiz div
   startQuizEl.style.display = "none";
-  var quest = questionsObj[currentQuestionIndex];
+  var quest = questionsArr[currentQuestionIndex];
   questionImageEl.innerHTML = "<img src=" + quest.imageSrc + " style='width: 200px;'>";
   question.innerHTML = quest.question;
   choiceAEl.innerHTML = quest.choiceA;
   choiceBEl.innerHTML = quest.choiceB;
   choiceCEl.innerHTML = quest.choiceC;
-  currentQuestionIndex++;
+}
+
+// checking the answer
+function checkAnswer(e) {
+  if (e.target.className === "choice") {
+    if (e.target.id === questionsArr[currentQuestionIndex].correct){
+      console.log("correct");
+    } else {
+      console.log("incorrect");
+    }
+    displayQuestion();
+  }
+
 }
 //starting the clock
 function counterStarts(sec){
