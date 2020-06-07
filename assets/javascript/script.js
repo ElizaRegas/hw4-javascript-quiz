@@ -19,7 +19,6 @@ var incorrectAnswerEl = document.getElementById("incorrect");
 var questionsArr = [
   {
     question: "Inside which HTML element do we put the JavaScript?",
-    imageSrc: "./assets/images/lizpf2.jpg",
     choiceA: "scripting",
     choiceB: "script",
     choiceC: "javascript",
@@ -28,7 +27,6 @@ var questionsArr = [
   {
     question:
       "What is the correct JavaScript syntax to change the content of an HTML element?",
-    imageSrc: "",
     choiceA: "document.getElementById('elementId').innerHTML",
     choiceB: "#demo.innerHTML",
     choiceC: "document.getElementByName('elementId').innerHTML",
@@ -36,7 +34,6 @@ var questionsArr = [
   },
   {
     question: "Question 3",
-    imageSrc: "",
     choiceA: "Option 3A",
     choiceB: "Option 3B",
     choiceC: "Option 3C",
@@ -53,22 +50,49 @@ document.addEventListener("click", checkAnswer);
 
 // generates question and starts timer
 function startGame() {
+  showQuizDiv();
   displayQuestion();
-  counterStarts(119);
+  counterStarts(999);
+}
+
+// display quiz div
+function showQuizDiv() {
+  startQuizEl.style.display = "none";
+  quizEl.style.display = "block";
 }
 
 // display question
 function displayQuestion() {
   currentQuestionIndex++;
-  // hide the start quiz div
-  startQuizEl.style.display = "none";
-  quizEl.style.display = "block";
   var quest = questionsArr[currentQuestionIndex];
-  questionImageEl.innerHTML = "<img src=" + quest.imageSrc + " style='width: 200px;'>";
   question.innerHTML = quest.question;
   choiceAEl.innerHTML = quest.choiceA;
   choiceBEl.innerHTML = quest.choiceB;
   choiceCEl.innerHTML = quest.choiceC;
+}
+
+//starting the clock
+function counterStarts(sec){
+  var secondsRemaining = sec;
+
+  var countDownTimer = setInterval(function() {
+    updateTimerDisplay(secondsRemaining);
+    if (secondsRemaining === 0) {
+      clearInterval(countDownTimer);
+      endGame();
+    } 
+    secondsRemaining--;
+  }, 1000);
+}
+
+// updating clock display in the dom
+function updateTimerDisplay(totalSecondsRemaining) {
+  minutesEl.innerText = Math.floor(totalSecondsRemaining / 60);
+  var secondsRemaining = totalSecondsRemaining % 60;
+  if (secondsRemaining < 10) {
+    secondsRemaining = "0" + secondsRemaining;
+  }
+  secondsEl.innerText = secondsRemaining;
 }
 
 // checking the answer
@@ -95,28 +119,6 @@ function returnDisplay() {
 
 function hideQuizDivs() {
   quizEl.style.display = "none";
-}
-//starting the clock
-function counterStarts(sec){
-  var secondsRemaining = sec;
-
-  var countDownTimer = setInterval(function() {
-    updateTimerDisplay(secondsRemaining);
-    if (secondsRemaining === 0) {
-      clearInterval(countDownTimer);
-      endGame();
-    } 
-    secondsRemaining--;
-  }, 1000);
-}
-// updating clock display in the dom
-function updateTimerDisplay(totalSecondsRemaining) {
-  minutesEl.innerText = Math.floor(totalSecondsRemaining / 60);
-  var secondsRemaining = totalSecondsRemaining % 60;
-  if (secondsRemaining < 10) {
-    secondsRemaining = "0" + secondsRemaining;
-  }
-  secondsEl.innerText = secondsRemaining;
 }
 // end game modal call
 function endGame() {

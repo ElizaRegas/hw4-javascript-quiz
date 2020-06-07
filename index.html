@@ -4,11 +4,11 @@
     <!-- meta tags -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- title tag -->
+    <title>Javascript Quiz</title>
     <!-- link tags -->
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Source+Code+Pro:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css" />
-    <!-- title tag -->
-    <title>Javascript Quiz</title>
   </head>
 
   <body>
@@ -17,10 +17,10 @@
       <!-- semantic element <section> -->
       <section>
         <!-- question and answer container-->
-        <div id="quiz" style="display: none;">
+        <div class="modalBox" id="quiz" style="display: none;">
           <!-- question div -->
           <div>
-            <p id="question">Question</p>
+            <p id="question"></p>
           </div>
           <!-- answer choices -->
           <div id="choices" style="border: 5px solid black;">
@@ -76,5 +76,6 @@
       crossorigin="anonymous"
     ></script>
     <script type="text/javascript" src="./assets/javascript/script.js"></script>
+  
   </body>
 </html>
