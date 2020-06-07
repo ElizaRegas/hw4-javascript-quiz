@@ -97,8 +97,10 @@ function updateTimerDisplay(totalSecondsRemaining) {
 
 // checking the answer
 function checkAnswer(e) {
-  if (e.target.className === "choice") {
+  if (e.target.className === "choice quizBoxStyle") {
+    console.log("choice clicked");
     if (e.target.id === questionsArr[currentQuestionIndex].correct){
+      console.log("correct");
       hideQuizDivs();
       correctAnswerEl.style.display = "block";
       setInterval(returnDisplay, 1500);
@@ -111,15 +113,16 @@ function checkAnswer(e) {
   }
 }
 
+function hideQuizDivs() {
+  quizEl.style.display = "none";
+}
+
 function returnDisplay() {
   quizEl.style.display = "block";
   correctAnswerEl.style.display = "none";
   incorrectAnswerEl.style.display = "none";
 }
 
-function hideQuizDivs() {
-  quizEl.style.display = "none";
-}
 // end game modal call
 function endGame() {
   quizEl.style.display = "none";
