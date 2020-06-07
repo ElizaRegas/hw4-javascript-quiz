@@ -7,7 +7,8 @@ var timerEl = document.getElementById("timer");
 var choiceAEl = document.getElementById("A");
 var choiceBEl = document.getElementById("B");
 var choiceCEl = document.getElementById("C");
-var progressEl = document.getElementById("progress");
+var correctEl = document.getElementById("correct");
+var incorrectEl = document.getElementById("incorrect");
 var scoreContainerEl = document.getElementById("scoreContainer");
 var minutesEl = document.getElementById("minutes");
 var secondsEl = document.getElementById("seconds");
@@ -58,6 +59,7 @@ function startGame() {
 // display quiz div
 function showQuizDiv() {
   startQuizEl.style.display = "none";
+  scoreContainerEl.style.display = "block";
   quizEl.style.display = "block";
 }
 
@@ -80,8 +82,9 @@ function counterStarts(sec){
     if (secondsRemaining === 0) {
       clearInterval(countDownTimer);
       endGame();
-    } 
-    secondsRemaining--;
+    } else {
+      secondsRemaining--;
+    }
   }, 1000);
 }
 

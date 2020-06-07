@@ -7,17 +7,34 @@
     <!-- title tag -->
     <title>Javascript Quiz</title>
     <!-- link tags -->
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Source+Code+Pro:wght@300;400;500&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Source+Code+Pro:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
 
   <body>
     <!-- semantic element <main> -->
     <main>
-      <!-- semantic element <section> -->
-      <section>
+      <!-- semantic element <section> and score container -->
+      <section id="scoreContainer" style="display: none;">
         <!-- question and answer container-->
         <div class="modalBox" id="quiz" style="display: none;">
+          <!-- show quiz progress -->
+          <div class="choice" id="statsBox">
+            <!-- counter -->
+            <div id="timer">
+              <span>Time: </span>
+              <span id="minutes">2</span>
+              <span> : </span>
+              <span id="seconds">00</span>
+              <span>||</span>
+              <span id="correct">Correct: 0</span>
+              <span>||</span>
+              <span id="incorrect">Incorrect: 0</span>
+            </div>
+          </div>
           <!-- question div -->
           <div>
             <p class="quizBoxStyle" id="question"></p>
@@ -28,21 +45,8 @@
             <div class="choice quizBoxStyle" id="B">B</div>
             <div class="choice quizBoxStyle" id="C">C</div>
           </div>
-          <!-- timer div -->
-          <div id="timer" style="border: 5px solid black;">
-            <!-- counter -->
-            <span id="minutes">2</span>
-            <span> : </span>
-            <span id="seconds">00</span>
-          </div>
-          <!-- show quiz progress -->
-          <div id="progress" style="border: 5px solid black;>
-            <div class="prog"></div>
-          </div>
         </div>
       </section>
-      <!-- semantic element <section> and score container -->
-      <section id="scoreContainer" style="display: none;"></section>
     </main>
 
     <!-- game modals -->
@@ -53,11 +57,25 @@
       </div>
     </div>
     <!-- correct modal -->
-    <div class="modalBox correctIncorrectText" id="correct" style="display: block;">Correct!</div>
+    <div
+      class="modalBox correctIncorrectText"
+      id="correct"
+      style="display: none;"
+    >
+      Correct!
+    </div>
     <!-- incorrect modal -->
-    <div class="modalBox correctIncorrectText" id="incorrect" style="display: block;">Incorrect.</div>
-    <!-- game over modal -->    
-    <div class="modalBox" id="gameOverModal" style="display: none;">Game Over!</div>
+    <div
+      class="modalBox correctIncorrectText"
+      id="incorrect"
+      style="display: none;"
+    >
+      Incorrect.
+    </div>
+    <!-- game over modal -->
+    <div class="modalBox" id="gameOverModal" style="display: none;">
+      Game Over!
+    </div>
 
     <!-- js links -->
     <script
@@ -76,6 +94,5 @@
       crossorigin="anonymous"
     ></script>
     <script type="text/javascript" src="./assets/javascript/script.js"></script>
-  
   </body>
 </html>
