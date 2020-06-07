@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- link tags -->
-    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Pacifico&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Source+Code+Pro:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css" />
     <!-- title tag -->
     <title>Javascript Quiz</title>
@@ -14,25 +14,10 @@
   <body>
     <!-- semantic element <main> -->
     <main>
-      <!-- semantic element <nav> -->
-      <nav id="startQuiz" style="display: block;">
-        <!-- quiz modal -->
-        <div id="modalBoxStartQuiz">
-          <a href="#" id="startQuizText">Start Quiz</a>
-        </div>
-      </nav>
       <!-- semantic element <section> -->
-      <section class="container">
+      <section>
         <!-- question and answer container-->
         <div id="quiz" style="display: none;">
-          <!-- question image -->
-          <!-- <div id="questionImage">
-            <img
-              src="./assets/images/lizpf2.jpg"
-              alt="question img"
-              style="width: 200px;"
-            />
-          </div> -->
           <!-- question div -->
           <div>
             <p id="question">Question</p>
@@ -56,14 +41,23 @@
           </div>
         </div>
       </section>
-      <!-- score container -->
-      <div id="scoreContainer" style="display: none;"></div>
+      <!-- semantic element <section> and score container -->
+      <section id="scoreContainer" style="display: none;"></section>
     </main>
 
     <!-- game modals -->
-    <div id="correct" style="display: none;">Correct!</div>
-    <div id="incorrect" style="display: none;">Incorrect!</div>
-    <div id="gameOverModal" style="display: none;">Game Over!</div>
+    <!-- quiz modal -->
+    <div id="startQuiz" style="display: block;">
+      <div class="modalBox" id="modalBoxStartQuiz">
+        <a href="#" id="startQuizText">Start Quiz</a>
+      </div>
+    </div>
+    <!-- correct modal -->
+    <div class="modalBox" id="correct" style="display: none;">Correct!</div>
+    <!-- incorrect modal -->
+    <div class="modalBox" id="incorrect" style="display: none;">Incorrect!</div>
+    <!-- game over modal -->    
+    <div class="modalBox" id="gameOverModal" style="display: none;">Game Over!</div>
 
     <!-- js links -->
     <script

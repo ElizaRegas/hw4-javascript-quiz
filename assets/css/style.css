@@ -6,23 +6,25 @@ html {
   background-size: cover;
 }
 
-main {
-}
-
-#modalBoxStartQuiz {
+.modalBox {
   border-radius: 10px;
   background-color: #757083 !important;
   border: 15px solid #5c76dc;
   box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+  padding: 10%;
+  margin: 30% 15%;
 }
 
 #startQuiz {
-  margin-top: 25%;
-}
-
-#startQuizText {
-  margin: 0%;
-  padding: 25%;
   text-align: center;
   width: 100%;
 }
+
+#startQuizText {
+  color: white;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 7vw;
+}
+
+/* font-family: 'Press Start 2P', cursive;
+font-family: 'Source Code Pro', monospace; */

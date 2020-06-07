@@ -62,6 +62,7 @@ function displayQuestion() {
   currentQuestionIndex++;
   // hide the start quiz div
   startQuizEl.style.display = "none";
+  quizEl.style.display = "block";
   var quest = questionsArr[currentQuestionIndex];
   questionImageEl.innerHTML = "<img src=" + quest.imageSrc + " style='width: 200px;'>";
   question.innerHTML = quest.question;
