@@ -18,7 +18,7 @@ var incorrectAnswerEl = document.getElementById("incorrect");
 
 var questionsArr = [
   {
-    question: "Inside which HTML element do we put the JavaScript?",
+    question: "Question #1: Inside which HTML element do we put the JavaScript?",
     choiceA: "scripting",
     choiceB: "script",
     choiceC: "javascript",

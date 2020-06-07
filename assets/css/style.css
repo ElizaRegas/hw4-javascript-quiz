@@ -13,11 +13,19 @@ html {
   border-radius: 10px;
   background-color: #757083 !important;
   border: 15px solid #5c76dc;
-  box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+  box-shadow: inset 0px 0px 5px 3px white !important;
   padding: 10%;
   margin: 15%;
-  box-shadow: inset 0px 0px 0px 3px white;
+}
 
+.quizBoxStyle {
+  padding: 5% 5%;
+  text-align: center;
+  font-size: 2vw;
+  font-weight: 400;
+  border: 8px solid #2f1987;
+  border-radius: 5px;
+  box-shadow: inset 0px 0px 30px 1px white;
 }
 
 #startQuiz {
@@ -31,14 +39,6 @@ html {
   font-size: 7vw;
 }
 
-#question {
-  padding: 5% 0%;
-  text-align: center;
-  font-size: 2vw;
-  font-weight: 400;
-  border: 5px solid black;
-  border-radius: 5px;
-}
 
 #quiz {
   padding: 2% 4%;
