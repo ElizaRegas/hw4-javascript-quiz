@@ -19,9 +19,9 @@ var incorrectAnswerEl = document.getElementById("incorrect");
 var questionsArr = [
   {
     question: "Question #1: Inside which HTML element does the JavaScript go?",
-    choiceA: "&ltscripting&gt",
-    choiceB: "&ltscript&gt",
-    choiceC: "&ltjavascript&gt",
+    choiceA: "Answer A: &ltscripting&gt",
+    choiceB: "Answer B: &ltscript&gt",
+    choiceC: "Answer C: &ltjavascript&gt",
     correct: "B",
   },
   {

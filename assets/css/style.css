@@ -7,6 +7,7 @@ html {
   color: white;
   font-family: 'Source Code Pro', monospace;
   font-weight: 200;
+  text-shadow: 1px 1px 0 #000;
 }
 
 .choice {
@@ -15,13 +16,18 @@ html {
   font-size: 1.5vw !important;
 }
 
+.choice:hover {
+  box-shadow: inset 0px 0px 200px 3px white !important;
+  text-shadow: -1px -1px 0 #000;
+}
+
 .modalBox {
   border-radius: 10px;
   background-color: #757083 !important;
   border: 15px solid #5c76dc;
   box-shadow: inset 0px 0px 5px 3px white !important;
   padding: 10%;
-  margin: 15%;
+  margin: 10% 15%;
 }
 
 .quizBoxStyle {
@@ -41,7 +47,7 @@ html {
 #B {
   width: 20%;
   float: left;
-  margin: 0% 1.6%;}
+  margin: 0% 2.75%;}
 
 #C {
   width: 20%;
