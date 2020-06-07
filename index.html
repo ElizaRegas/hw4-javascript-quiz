@@ -18,7 +18,7 @@
     <!-- semantic element <main> -->
     <main>
       <!-- semantic element <section> and score container -->
-      <section id="scoreContainer" style="display: none;">
+      <section id="scoreContainer" style="display: none">
         <!-- question and answer container-->
         <div class="modalBox" id="quiz" style="display: none;">
           <!-- show quiz progress -->
@@ -30,9 +30,13 @@
               <span> : </span>
               <span id="seconds">00</span>
               <span>||</span>
-              <span id="correct">Correct: 0</span>
+              <span>Correct: 
+                <span id="correct"></span>
+              </span>
               <span>||</span>
-              <span id="incorrect">Incorrect: 0</span>
+              <span>Incorrect: 
+                <span id="incorrect"></span>
+              </span>            
             </div>
           </div>
           <!-- question div -->
@@ -59,7 +63,7 @@
     <!-- correct modal -->
     <div
       class="modalBox correctIncorrectText"
-      id="correct"
+      id="correctModal"
       style="display: none;"
     >
       Correct!
@@ -67,7 +71,7 @@
     <!-- incorrect modal -->
     <div
       class="modalBox correctIncorrectText"
-      id="incorrect"
+      id="incorrectModal"
       style="display: none;"
     >
       Incorrect.

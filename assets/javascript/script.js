@@ -1,21 +1,19 @@
 var startQuizEl = document.getElementById("startQuiz");
 var quizEl = document.getElementById("quiz");
-var questionImageEl = document.getElementById("questionImage");
 var questionEl = document.getElementById("question");
-var counterEl = document.getElementById("counter");
 var timerEl = document.getElementById("timer");
 var choiceAEl = document.getElementById("A");
 var choiceBEl = document.getElementById("B");
 var choiceCEl = document.getElementById("C");
-var correctEl = document.getElementById("correct");
-var incorrectEl = document.getElementById("incorrect");
 var scoreContainerEl = document.getElementById("scoreContainer");
 var minutesEl = document.getElementById("minutes");
 var secondsEl = document.getElementById("seconds");
 var guessAnswer = document.getElementsByClassName("choice");
 var gameOverModalEl = document.getElementById("gameOverModal");
-var correctAnswerEl = document.getElementById("correct");
-var incorrectAnswerEl = document.getElementById("incorrect");
+var correctAnswerEl = document.getElementById("correctModal");
+var incorrectAnswerEl = document.getElementById("incorrectModal");
+var correctEl = document.getElementById("correct");
+var incorrectEl = document.getElementById("incorrect");
 
 var questionsArr = [
   {
@@ -58,6 +56,8 @@ function startGame() {
 
 // display quiz div
 function showQuizDiv() {
+  correctEl.innerText = 0;
+  incorrectEl.innerText = 0;
   startQuizEl.style.display = "none";
   scoreContainerEl.style.display = "block";
   quizEl.style.display = "block";
@@ -101,11 +101,11 @@ function updateTimerDisplay(totalSecondsRemaining) {
 // checking the answer
 function checkAnswer(e) {
   if (e.target.className === "choice quizBoxStyle") {
-    console.log("choice clicked");
     if (e.target.id === questionsArr[currentQuestionIndex].correct){
-      console.log("correct");
-      hideQuizDivs();
-      correctAnswerEl.style.display = "block";
+      quizEl.style.display = "none";
+      correctAnswerEl.style.display = "block";   
+      correctEl.innerText++;
+      console.log(correctEl);    
       setInterval(returnDisplay, 1500);
     } else {
       hideQuizDivs();
@@ -114,10 +114,6 @@ function checkAnswer(e) {
     }
     displayQuestion();
   }
-}
-
-function hideQuizDivs() {
-  quizEl.style.display = "none";
 }
 
 function returnDisplay() {
