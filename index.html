@@ -1,41 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- meta tags -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Javascript Quiz</title>
-    <!-- bootstrap link -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
-      crossorigin="anonymous"
-    />
+    <!-- link tags -->
+    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Pacifico&family=Shadows+Into+Light&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css" />
+    <!-- title tag -->
+    <title>Javascript Quiz</title>
   </head>
 
   <body>
+    <!-- semantic element <main> -->
     <main>
-      <!-- start quiz container -->
-      <div class="container" style="border: 5px solid black;">
-        <nav class="navbar navbar-light bg-primary" id="startQuiz">
-          <a class="navbar-brand" href="#">Start Quiz</a>
-        </nav>
-      </div>
-      <!-- question and answer container-->
-      <div class="container" style="border: 5px solid black;">
-        <div id="quiz" style="display: block;">
+      <!-- semantic element <nav> -->
+      <nav id="startQuiz" style="display: block;">
+        <!-- quiz modal -->
+        <div id="modalBoxStartQuiz">
+          <a href="#" id="startQuizText">Start Quiz</a>
+        </div>
+      </nav>
+      <!-- semantic element <section> -->
+      <section class="container">
+        <!-- question and answer container-->
+        <div id="quiz" style="display: none;">
           <!-- question image -->
-          <div id="questionImage">
+          <!-- <div id="questionImage">
             <img
               src="./assets/images/lizpf2.jpg"
               alt="question img"
               style="width: 200px;"
             />
-          </div>
+          </div> -->
           <!-- question div -->
           <div>
             <p id="question">Question</p>
+          </div>
+          <!-- answer choices -->
+          <div id="choices" style="border: 5px solid black;">
+            <div class="choice" id="A">A</div>
+            <div class="choice" id="B">B</div>
+            <div class="choice" id="C">C</div>
           </div>
           <!-- timer div -->
           <div id="timer" style="border: 5px solid black;">
@@ -44,20 +50,14 @@
             <span> : </span>
             <span id="seconds">00</span>
           </div>
-          <!-- answer choices -->
-          <div id="choices" style="border: 5px solid black;">
-            <div class="choice" id="A">A</div>
-            <div class="choice" id="B">B</div>
-            <div class="choice" id="C">C</div>
-          </div>
           <!-- show quiz progress -->
           <div id="progress" style="border: 5px solid black;>
             <div class="prog"></div>
           </div>
         </div>
-      </div>
+      </section>
       <!-- score container -->
-      <div id="scoreContainer" style="display: block;"></div>
+      <div id="scoreContainer" style="display: none;"></div>
     </main>
 
     <!-- game modals -->
