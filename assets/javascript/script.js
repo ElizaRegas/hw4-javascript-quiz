@@ -18,10 +18,10 @@ var incorrectAnswerEl = document.getElementById("incorrect");
 
 var questionsArr = [
   {
-    question: "Question #1: Inside which HTML element do we put the JavaScript?",
-    choiceA: "scripting",
-    choiceB: "script",
-    choiceC: "javascript",
+    question: "Question #1: Inside which HTML element does the JavaScript go?",
+    choiceA: "&ltscripting&gt",
+    choiceB: "&ltscript&gt",
+    choiceC: "&ltjavascript&gt",
     correct: "B",
   },
   {

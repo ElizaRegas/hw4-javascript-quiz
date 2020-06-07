@@ -9,6 +9,12 @@ html {
   font-weight: 200;
 }
 
+.choice {
+  margin: auto;
+  text-align: center;
+  font-size: 1.5vw !important;
+}
+
 .modalBox {
   border-radius: 10px;
   background-color: #757083 !important;
@@ -20,12 +26,26 @@ html {
 
 .quizBoxStyle {
   padding: 5% 5%;
-  text-align: center;
   font-size: 2vw;
   font-weight: 400;
   border: 8px solid #2f1987;
   border-radius: 5px;
   box-shadow: inset 0px 0px 30px 1px white;
+}
+
+#A {
+  width: 20%;
+  float: left;
+}
+
+#B {
+  width: 20%;
+  float: left;
+  margin: 0% 1.6%;}
+
+#C {
+  width: 20%;
+  float: right;
 }
 
 #startQuiz {
@@ -39,9 +59,12 @@ html {
   font-size: 7vw;
 }
 
-
 #quiz {
   padding: 2% 4%;
+}
+
+#timer {
+  clear: both;
 }
 
 /* font-family: 'Press Start 2P', cursive;
