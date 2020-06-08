@@ -12,8 +12,10 @@ html {
 
 .choice {
   margin: auto;
-  text-align: center;
+  text-align: justify;
   font-size: 1.5vw !important;
+  padding: 1vw !important;
+  margin-bottom: .5vw;
 }
 
 .choice:hover {
@@ -47,22 +49,6 @@ html {
   box-shadow: inset 0px 0px 30px 1px white;
 }
 
-#A {
-  width: 20%;
-  float: left;
-}
-
-#B {
-  width: 20%;
-  float: left;
-  margin: 0% 2%;
-}
-
-#C {
-  width: 20%;
-  float: right;
-}
-
 #question {
   width: 88.5%;
 }
@@ -83,6 +69,6 @@ html {
   text-shadow: 10px 10px 15px #333;
 }
 
-#timer {
-
+#statsBox {
+  text-align: center;
 }

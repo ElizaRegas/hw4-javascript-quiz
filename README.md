@@ -60,3 +60,5 @@ You are required to submit the following for review:
   // scores are updated
   // the next question is displayed 
 // At the end of the game, I can save my initials and score
+
+CREDIT W3 Schools for java script quiz

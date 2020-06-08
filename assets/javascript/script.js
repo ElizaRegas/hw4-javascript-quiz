@@ -5,6 +5,7 @@ var timerEl = document.getElementById("timer");
 var choiceAEl = document.getElementById("A");
 var choiceBEl = document.getElementById("B");
 var choiceCEl = document.getElementById("C");
+var choiceDEl = document.getElementById("D");
 var scoreContainerEl = document.getElementById("scoreContainer");
 var minutesEl = document.getElementById("minutes");
 var secondsEl = document.getElementById("seconds");
@@ -14,34 +15,102 @@ var correctAnswerEl = document.getElementById("correctModal");
 var incorrectAnswerEl = document.getElementById("incorrectModal");
 var correctEl = document.getElementById("correct");
 var incorrectEl = document.getElementById("incorrect");
+var timerRunning = false;
 
 var questionsArr = [
   {
-    question: "Question #1: Inside which HTML element does the JavaScript go?",
+    question: "Question #1: Inside which HTML element do we put the JavaScript?",
     choiceA: "Answer A: &ltscripting&gt",
     choiceB: "Answer B: &ltscript&gt",
     choiceC: "Answer C: &ltjavascript&gt",
+    choiceD: "Answer D: &ltjs&gt",
     correct: "B",
   },
   {
-    question:
-      "What is the correct JavaScript syntax to change the content of an HTML element?",
-    choiceA: "document.getElementById('elementId').innerHTML",
-    choiceB: "#demo.innerHTML",
-    choiceC: "document.getElementByName('elementId').innerHTML",
-    correct: "A",
+    question: "Question #2: Where is the correct place to insert the Javascript &ltscript&gt tag?",
+    choiceA: "Answer A: The &lthead&gt section",
+    choiceB: "Answer B: The &ltbody&gt section",
+    choiceC: "Answer C: Either the &lthead&gt section or &ltbody&gt section",
+    choiceD: "Answer D: The &ltfooter&gt section",
+    correct: "C",
   },
   {
-    question: "Question 3",
-    choiceA: "Option 3A",
-    choiceB: "Option 3B",
-    choiceC: "Option 3C",
-    correct: "A",
+    question: "Question #3: The external JavaScript file must contain the &ltscript&gt tag.",
+    choiceA: "Answer A: True",
+    choiceB: "Answer B: False",
+    choiceC: "Answer C: Either",
+    choiceD: "Answer D: It depends on the context",
+    correct: "B",
+  },
+  {
+    question: "Question #4: What is the correct syntax for referring to an external script called \"xxx.js\"?",
+    choiceA: "Answer A: &ltscript type=\"xxx.js\"&gt",
+    choiceB: "Answer B: &ltscript href=\"xxx.js\"&gt",
+    choiceC: "Answer C: &ltscript name=\"xxx.js\"&gt",
+    choiceD: "Answer D: &ltscript src=\"xxx.js\"&gt",
+    correct: "D",
+  },
+  {
+    question: "Question #5: ",
+    choiceA: "Answer A: ",
+    choiceB: "Answer B: ",
+    choiceC: "Answer C: ",
+    choiceD: "Answer D: ",
+    correct: " ",
+  },
+  {
+    question: "Question #6: ",
+    choiceA: "Answer A: ",
+    choiceB: "Answer B: ",
+    choiceC: "Answer C: ",
+    choiceD: "Answer D: ",
+    correct: " ",
+  },
+  {
+    question: "Question #7: ",
+    choiceA: "Answer A: ",
+    choiceB: "Answer B: ",
+    choiceC: "Answer C: ",
+    choiceD: "Answer D: ",
+    correct: " ",
+  },
+  {
+    question: "Question #8: ",
+    choiceA: "Answer A: ",
+    choiceB: "Answer B: ",
+    choiceC: "Answer C: ",
+    choiceD: "Answer D: ",
+    correct: " ",
+  },
+  {
+    question: "Question #9: ",
+    choiceA: "Answer A: ",
+    choiceB: "Answer B: ",
+    choiceC: "Answer C: ",
+    choiceD: "Answer D: ",
+    correct: " ",
+  },
+  {
+    question: "Question #10: ",
+    choiceA: "Answer A: ",
+    choiceB: "Answer B: ",
+    choiceC: "Answer C: ",
+    choiceD: "Answer D: ",
+    correct: " ",
+  },
+  {
+    question: "Question #11: ",
+    choiceA: "Answer A: ",
+    choiceB: "Answer B: ",
+    choiceC: "Answer C: ",
+    choiceD: "Answer D: ",
+    correct: " ",
   },
 ];
 
 var lastQuestionIndex = questionsArr.length - 1;
 var currentQuestionIndex = -1;
+var totalSecondsRemaining;
 
 // starting the game by clicking on Start Quiz
 startQuizEl.addEventListener("click", startGame);
@@ -51,7 +120,7 @@ document.addEventListener("click", checkAnswer);
 function startGame() {
   showQuizDiv();
   displayQuestion();
-  counterStarts(999);
+  counterStarts(119);
 }
 
 // display quiz div
@@ -71,10 +140,12 @@ function displayQuestion() {
   choiceAEl.innerHTML = quest.choiceA;
   choiceBEl.innerHTML = quest.choiceB;
   choiceCEl.innerHTML = quest.choiceC;
+  choiceDEl.innerHTML = quest.choiceD;
 }
 
 //starting the clock
 function counterStarts(sec){
+  timerRunning = true;
   var secondsRemaining = sec;
 
   var countDownTimer = setInterval(function() {
@@ -85,7 +156,13 @@ function counterStarts(sec){
     } else {
       secondsRemaining--;
     }
+
+    if (timerRunning === false) {
+      clearInterval(countDownTimer);
+      console.log("timer stopped");
+    }
   }, 1000);
+
 }
 
 // updating clock display in the dom
@@ -102,18 +179,29 @@ function updateTimerDisplay(totalSecondsRemaining) {
 function checkAnswer(e) {
   if (e.target.className === "choice quizBoxStyle") {
     if (e.target.id === questionsArr[currentQuestionIndex].correct){
-      quizEl.style.display = "none";
+      hideQuizDivs();
       correctAnswerEl.style.display = "block";   
       correctEl.innerText++;
-      console.log(correctEl);    
       setInterval(returnDisplay, 1500);
     } else {
       hideQuizDivs();
+      timerRunning = false;
+      incorrectEl.innerText++;
       incorrectAnswerEl.style.display = "block";
+      // minusFive();
       setInterval(returnDisplay, 1500);
     }
     displayQuestion();
   }
+}
+
+// function minusFive() {
+//   var fiveLess = parseInt(secondsEl.innerText) - 5;
+//   counterStarts(fiveLess);
+// }
+
+function hideQuizDivs() {
+  quizEl.style.display = "none";
 }
 
 function returnDisplay() {
