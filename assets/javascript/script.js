@@ -16,6 +16,7 @@ var incorrectAnswerEl = document.getElementById("incorrectModal");
 var correctEl = document.getElementById("correct");
 var incorrectEl = document.getElementById("incorrect");
 var scoreEl = document.getElementById("score");
+var nameInputBoxEl = document.getElementById("nameInputBox");
 
 var questionsArr = [
   {
@@ -51,60 +52,52 @@ var questionsArr = [
     correct: "D",
   },
   {
-    question: "Question #4: What is the correct syntax for referring to an external script called \"xxx.js\"?",
-    choiceA: "Answer A: &ltscript type=\"xxx.js\"&gt",
-    choiceB: "Answer B: &ltscript href=\"xxx.js\"&gt",
-    choiceC: "Answer C: &ltscript name=\"xxx.js\"&gt",
-    choiceD: "Answer D: &ltscript src=\"xxx.js\"&gt",
+    question: "Question #5: How do you write \"Hello World\" in an alert box?",
+    choiceA: "Answer A: alert(\"Hello World\");",
+    choiceB: "Answer B: msgBox(\"Hello World\");",
+    choiceC: "Answer C: alertBox(\"Hello World\");",
+    choiceD: "Answer D: msg(\"Hello World\");",
+    correct: "A",
+  },
+  {
+    question: "Question #6: How do you write an IF statement in JavaScript?",
+    choiceA: "Answer A: if i = 5 then",
+    choiceB: "Answer B: if (i == 5)",
+    choiceC: "Answer C: if i = 5",
+    choiceD: "Answer D: if i == 5 then",
+    correct: "B",
+  },
+  {
+    question: "Question #7: How does a FOR loop start?",
+    choiceA: "Answer A: for (i <= 5; i++)",
+    choiceB: "Answer B: for (i = 0; i <= 5)",
+    choiceC: "Answer C: for (i = 0; i <= 5; i++)",
+    choiceD: "Answer D: for i = 1 to 5",
+    correct: "C",
+  },
+  {
+    question: "Question #8: What is the correct way to write a JavaScript array?",
+    choiceA: "Answer A: var colors = [\"red\", \"green\", \"blue\"]",
+    choiceB: "Answer B: var colors = 1 = (\"red\"), 2 = (\"green\"), 3 = (\"blue\")",
+    choiceC: "Answer C: var colors = (1:\"red\", 2:\"green\", 3:\"blue\")",
+    choiceD: "Answer D: var colors = \"red\", \"green\", \"blue\"",
     correct: "D",
   },
   {
-    question: "Question #4: What is the correct syntax for referring to an external script called \"xxx.js\"?",
-    choiceA: "Answer A: &ltscript type=\"xxx.js\"&gt",
-    choiceB: "Answer B: &ltscript href=\"xxx.js\"&gt",
-    choiceC: "Answer C: &ltscript name=\"xxx.js\"&gt",
-    choiceD: "Answer D: &ltscript src=\"xxx.js\"&gt",
-    correct: "D",
+    question: "Question #9: How do you round the number 7.25, to the nearest integer?",
+    choiceA: "Answer A: Math.rnd(7.25)",
+    choiceB: "Answer B: Math.round(7.25)",
+    choiceC: "Answer C: round(7.25)",
+    choiceD: "Answer D: rnd(7.25)",
+    correct: "B",
   },
   {
-    question: "Question #4: What is the correct syntax for referring to an external script called \"xxx.js\"?",
-    choiceA: "Answer A: &ltscript type=\"xxx.js\"&gt",
-    choiceB: "Answer B: &ltscript href=\"xxx.js\"&gt",
-    choiceC: "Answer C: &ltscript name=\"xxx.js\"&gt",
-    choiceD: "Answer D: &ltscript src=\"xxx.js\"&gt",
-    correct: "D",
-  },
-  {
-    question: "Question #4: What is the correct syntax for referring to an external script called \"xxx.js\"?",
-    choiceA: "Answer A: &ltscript type=\"xxx.js\"&gt",
-    choiceB: "Answer B: &ltscript href=\"xxx.js\"&gt",
-    choiceC: "Answer C: &ltscript name=\"xxx.js\"&gt",
-    choiceD: "Answer D: &ltscript src=\"xxx.js\"&gt",
-    correct: "D",
-  },
-  {
-    question: "Question #4: What is the correct syntax for referring to an external script called \"xxx.js\"?",
-    choiceA: "Answer A: &ltscript type=\"xxx.js\"&gt",
-    choiceB: "Answer B: &ltscript href=\"xxx.js\"&gt",
-    choiceC: "Answer C: &ltscript name=\"xxx.js\"&gt",
-    choiceD: "Answer D: &ltscript src=\"xxx.js\"&gt",
-    correct: "D",
-  },
-  {
-    question: "Question #4: What is the correct syntax for referring to an external script called \"xxx.js\"?",
-    choiceA: "Answer A: &ltscript type=\"xxx.js\"&gt",
-    choiceB: "Answer B: &ltscript href=\"xxx.js\"&gt",
-    choiceC: "Answer C: &ltscript name=\"xxx.js\"&gt",
-    choiceD: "Answer D: &ltscript src=\"xxx.js\"&gt",
-    correct: "D",
-  },
-  {
-    question: "Question #4: What is the correct syntax for referring to an external script called \"xxx.js\"?",
-    choiceA: "Answer A: &ltscript type=\"xxx.js\"&gt",
-    choiceB: "Answer B: &ltscript href=\"xxx.js\"&gt",
-    choiceC: "Answer C: &ltscript name=\"xxx.js\"&gt",
-    choiceD: "Answer D: &ltscript src=\"xxx.js\"&gt",
-    correct: "D",
+    question: "Question #10: Which event occurs when the user clicks on an HTML element?",
+    choiceA: "Answer A: onclick",
+    choiceB: "Answer B: onmouseclick",
+    choiceC: "Answer C: onchange",
+    choiceD: "Answer D: onmouseover",
+    correct: "A",
   },
 ];
 
@@ -113,6 +106,7 @@ var currentQuestionIndex = -1;
 var totalSecondsRemaining;
 var countDownTimer;
 var secondsRemaining;
+var gameIsOver = false;
 
 // starting the game by clicking on Start Quiz
 startQuizEl.addEventListener("click", startGame);
@@ -190,6 +184,12 @@ function checkAnswer(e) {
       incorrectEl.innerText++;
       setTimeout(returnDisplay, 2000);
       counterStarts(secondsRemaining - 8);
+      // console.log(secondsRemaining);
+      if (secondsRemaining < 0) {
+        secondsRemaining = 0
+        clearInterval(countDownTimer);
+        endGame();
+      } 
     }
     displayQuestion();
   }
@@ -200,25 +200,20 @@ function hideQuizDivs() {
 }
 
 function returnDisplay() {
-  quizEl.style.display = "block";
+  if (gameIsOver === false) {
+    quizEl.style.display = "block";
+  }
   correctAnswerEl.style.display = "none";
   incorrectAnswerEl.style.display = "none";
 }
 
 // end game modal call
 function endGame() {
+  gameIsOver = true;
   quizEl.style.display = "none";
   gameOverModalEl.style.display = "block";
 }
 
-function saveName(){
-  console.log("getting there");
-}
-
-// window.localStorage.setItem('name', 'Obaseki Nosa');
-
-
-// There are 25 questions
 
 // scores are updated
 // the next question is displayed
