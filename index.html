@@ -26,7 +26,7 @@
             <!-- counter -->
             <div id="timer">
               <span>Time: </span>
-              <span id="minutes">2</span>
+              <span id="minutes">1</span>
               <span> : </span>
               <span id="seconds">00</span>
               <span>||</span>
@@ -39,7 +39,7 @@
               </span>   
               <span>||</span>
               <span>Score: 
-                <span id="score"></span>
+                <span id="score">60</span>
               </span>               
             </div>
           </div>
@@ -62,7 +62,7 @@
     <!-- quiz modal -->
     <div id="startQuiz" style="display: block;">
       <div class="modalBox" id="modalBoxStartQuiz">
-        <a href="#" id="startQuizText">Start Quiz</a>
+        <a href="#" class="startEndText" id="startQuizText">Start Quiz</a>
       </div>
     </div>
     <!-- correct modal -->
@@ -82,7 +82,7 @@
       Incorrect.
     </div>
     <!-- game over modal -->
-    <div class="modalBox" id="gameOverModal" style="display: none;">
+    <div class="modalBox startEndText" id="gameOverModal" style="display: none;">
       Game Over!
     </div>
 

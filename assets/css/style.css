@@ -49,6 +49,13 @@ html {
   box-shadow: inset 0px 0px 30px 1px white;
 }
 
+.startEndText {
+  color: white;
+  font-weight: 600;
+  font-size: 7vw;
+  text-shadow: 10px 10px 15px #333;
+}
+
 #question {
   width: 88.5%;
 }
@@ -60,13 +67,6 @@ html {
 #startQuiz {
   text-align: center;
   width: 100%;
-}
-
-#startQuizText {
-  color: white;
-  font-weight: 600;
-  font-size: 7vw;
-  text-shadow: 10px 10px 15px #333;
 }
 
 #statsBox {

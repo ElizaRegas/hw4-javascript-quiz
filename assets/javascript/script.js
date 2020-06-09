@@ -15,6 +15,7 @@ var correctAnswerEl = document.getElementById("correctModal");
 var incorrectAnswerEl = document.getElementById("incorrectModal");
 var correctEl = document.getElementById("correct");
 var incorrectEl = document.getElementById("incorrect");
+var scoreEl = document.getElementById("score");
 
 var questionsArr = [
   {
@@ -121,7 +122,7 @@ document.addEventListener("click", checkAnswer);
 function startGame() {
   showQuizDiv();
   displayQuestion();
-  counterStarts(119);
+  counterStarts(59);
 }
 
 // display quiz div
@@ -146,7 +147,7 @@ function displayQuestion() {
 
 //starting the clock
 function counterStarts(sec){
-  var secondsRemaining = sec;
+  secondsRemaining = sec;
 
   countDownTimer = setInterval(function() {
     updateTimerDisplay(secondsRemaining);
@@ -161,13 +162,13 @@ function counterStarts(sec){
 }
 
 // updating clock display in the dom
-function updateTimerDisplay(totalSecondsRemaining) {
-  minutesEl.innerText = Math.floor(totalSecondsRemaining / 60);
-  secondsRemaining = totalSecondsRemaining % 60;
+function updateTimerDisplay(secondsRemaining) {
+  minutesEl.innerText = Math.floor(secondsRemaining / 60);
   if (secondsRemaining < 10) {
     secondsRemaining = "0" + secondsRemaining;
   }
   secondsEl.innerText = secondsRemaining;
+  scoreEl.innerText = secondsRemaining;
 }
 
 // checking the answer
@@ -188,7 +189,7 @@ function checkAnswer(e) {
       incorrectAnswerEl.style.display = "block";
       incorrectEl.innerText++;
       setTimeout(returnDisplay, 2000);
-      counterStarts(secondsRemaining - 4);
+      counterStarts(secondsRemaining - 8);
     }
     displayQuestion();
   }
