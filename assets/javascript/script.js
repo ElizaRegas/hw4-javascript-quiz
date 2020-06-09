@@ -15,7 +15,6 @@ var correctAnswerEl = document.getElementById("correctModal");
 var incorrectAnswerEl = document.getElementById("incorrectModal");
 var correctEl = document.getElementById("correct");
 var incorrectEl = document.getElementById("incorrect");
-var timerRunning = false;
 
 var questionsArr = [
   {
@@ -51,66 +50,68 @@ var questionsArr = [
     correct: "D",
   },
   {
-    question: "Question #5: ",
-    choiceA: "Answer A: ",
-    choiceB: "Answer B: ",
-    choiceC: "Answer C: ",
-    choiceD: "Answer D: ",
-    correct: " ",
+    question: "Question #4: What is the correct syntax for referring to an external script called \"xxx.js\"?",
+    choiceA: "Answer A: &ltscript type=\"xxx.js\"&gt",
+    choiceB: "Answer B: &ltscript href=\"xxx.js\"&gt",
+    choiceC: "Answer C: &ltscript name=\"xxx.js\"&gt",
+    choiceD: "Answer D: &ltscript src=\"xxx.js\"&gt",
+    correct: "D",
   },
   {
-    question: "Question #6: ",
-    choiceA: "Answer A: ",
-    choiceB: "Answer B: ",
-    choiceC: "Answer C: ",
-    choiceD: "Answer D: ",
-    correct: " ",
+    question: "Question #4: What is the correct syntax for referring to an external script called \"xxx.js\"?",
+    choiceA: "Answer A: &ltscript type=\"xxx.js\"&gt",
+    choiceB: "Answer B: &ltscript href=\"xxx.js\"&gt",
+    choiceC: "Answer C: &ltscript name=\"xxx.js\"&gt",
+    choiceD: "Answer D: &ltscript src=\"xxx.js\"&gt",
+    correct: "D",
   },
   {
-    question: "Question #7: ",
-    choiceA: "Answer A: ",
-    choiceB: "Answer B: ",
-    choiceC: "Answer C: ",
-    choiceD: "Answer D: ",
-    correct: " ",
+    question: "Question #4: What is the correct syntax for referring to an external script called \"xxx.js\"?",
+    choiceA: "Answer A: &ltscript type=\"xxx.js\"&gt",
+    choiceB: "Answer B: &ltscript href=\"xxx.js\"&gt",
+    choiceC: "Answer C: &ltscript name=\"xxx.js\"&gt",
+    choiceD: "Answer D: &ltscript src=\"xxx.js\"&gt",
+    correct: "D",
   },
   {
-    question: "Question #8: ",
-    choiceA: "Answer A: ",
-    choiceB: "Answer B: ",
-    choiceC: "Answer C: ",
-    choiceD: "Answer D: ",
-    correct: " ",
+    question: "Question #4: What is the correct syntax for referring to an external script called \"xxx.js\"?",
+    choiceA: "Answer A: &ltscript type=\"xxx.js\"&gt",
+    choiceB: "Answer B: &ltscript href=\"xxx.js\"&gt",
+    choiceC: "Answer C: &ltscript name=\"xxx.js\"&gt",
+    choiceD: "Answer D: &ltscript src=\"xxx.js\"&gt",
+    correct: "D",
   },
   {
-    question: "Question #9: ",
-    choiceA: "Answer A: ",
-    choiceB: "Answer B: ",
-    choiceC: "Answer C: ",
-    choiceD: "Answer D: ",
-    correct: " ",
+    question: "Question #4: What is the correct syntax for referring to an external script called \"xxx.js\"?",
+    choiceA: "Answer A: &ltscript type=\"xxx.js\"&gt",
+    choiceB: "Answer B: &ltscript href=\"xxx.js\"&gt",
+    choiceC: "Answer C: &ltscript name=\"xxx.js\"&gt",
+    choiceD: "Answer D: &ltscript src=\"xxx.js\"&gt",
+    correct: "D",
   },
   {
-    question: "Question #10: ",
-    choiceA: "Answer A: ",
-    choiceB: "Answer B: ",
-    choiceC: "Answer C: ",
-    choiceD: "Answer D: ",
-    correct: " ",
+    question: "Question #4: What is the correct syntax for referring to an external script called \"xxx.js\"?",
+    choiceA: "Answer A: &ltscript type=\"xxx.js\"&gt",
+    choiceB: "Answer B: &ltscript href=\"xxx.js\"&gt",
+    choiceC: "Answer C: &ltscript name=\"xxx.js\"&gt",
+    choiceD: "Answer D: &ltscript src=\"xxx.js\"&gt",
+    correct: "D",
   },
   {
-    question: "Question #11: ",
-    choiceA: "Answer A: ",
-    choiceB: "Answer B: ",
-    choiceC: "Answer C: ",
-    choiceD: "Answer D: ",
-    correct: " ",
+    question: "Question #4: What is the correct syntax for referring to an external script called \"xxx.js\"?",
+    choiceA: "Answer A: &ltscript type=\"xxx.js\"&gt",
+    choiceB: "Answer B: &ltscript href=\"xxx.js\"&gt",
+    choiceC: "Answer C: &ltscript name=\"xxx.js\"&gt",
+    choiceD: "Answer D: &ltscript src=\"xxx.js\"&gt",
+    correct: "D",
   },
 ];
 
 var lastQuestionIndex = questionsArr.length - 1;
 var currentQuestionIndex = -1;
 var totalSecondsRemaining;
+var countDownTimer;
+var secondsRemaining;
 
 // starting the game by clicking on Start Quiz
 startQuizEl.addEventListener("click", startGame);
@@ -145,21 +146,15 @@ function displayQuestion() {
 
 //starting the clock
 function counterStarts(sec){
-  timerRunning = true;
   var secondsRemaining = sec;
 
-  var countDownTimer = setInterval(function() {
+  countDownTimer = setInterval(function() {
     updateTimerDisplay(secondsRemaining);
     if (secondsRemaining === 0) {
       clearInterval(countDownTimer);
       endGame();
     } else {
       secondsRemaining--;
-    }
-
-    if (timerRunning === false) {
-      clearInterval(countDownTimer);
-      console.log("timer stopped");
     }
   }, 1000);
 
@@ -168,7 +163,7 @@ function counterStarts(sec){
 // updating clock display in the dom
 function updateTimerDisplay(totalSecondsRemaining) {
   minutesEl.innerText = Math.floor(totalSecondsRemaining / 60);
-  var secondsRemaining = totalSecondsRemaining % 60;
+  secondsRemaining = totalSecondsRemaining % 60;
   if (secondsRemaining < 10) {
     secondsRemaining = "0" + secondsRemaining;
   }
@@ -178,27 +173,26 @@ function updateTimerDisplay(totalSecondsRemaining) {
 // checking the answer
 function checkAnswer(e) {
   if (e.target.className === "choice quizBoxStyle") {
-    if (e.target.id === questionsArr[currentQuestionIndex].correct){
+    if (e.target.id === questionsArr[currentQuestionIndex].correct) {
+      clearInterval(countDownTimer);
       hideQuizDivs();
       correctAnswerEl.style.display = "block";   
       correctEl.innerText++;
-      setInterval(returnDisplay, 1500);
-    } else {
+      setTimeout(returnDisplay, 2000);
+      counterStarts(secondsRemaining + 2);
+    } 
+    
+    if (e.target.id !== questionsArr[currentQuestionIndex].correct) {
+      clearInterval(countDownTimer);
       hideQuizDivs();
-      timerRunning = false;
-      incorrectEl.innerText++;
       incorrectAnswerEl.style.display = "block";
-      // minusFive();
-      setInterval(returnDisplay, 1500);
+      incorrectEl.innerText++;
+      setTimeout(returnDisplay, 2000);
+      counterStarts(secondsRemaining - 4);
     }
     displayQuestion();
   }
 }
-
-// function minusFive() {
-//   var fiveLess = parseInt(secondsEl.innerText) - 5;
-//   counterStarts(fiveLess);
-// }
 
 function hideQuizDivs() {
   quizEl.style.display = "none";
@@ -217,11 +211,8 @@ function endGame() {
 }
 
 
-// The counter can be paused, but then detracts 5 seconds
 // There are 25 questions
-// When a question is answered-
-// the counter pauses
-// if incorrect, the timer subtracts 5 seconds and a message is displayed
+
 // scores are updated
 // the next question is displayed
 // At the end of the game, I can save my initials and score
