@@ -16,6 +16,7 @@ var incorrectAnswerEl = document.getElementById("incorrectModal");
 var correctEl = document.getElementById("correct");
 var incorrectEl = document.getElementById("incorrect");
 var scoreEl = document.getElementById("score");
+var nameInputBoxEl = document.getElementById("nameInputBox");
 
 var questionsArr = [
   {
@@ -209,13 +210,9 @@ function returnDisplay() {
 function endGame() {
   quizEl.style.display = "none";
   gameOverModalEl.style.display = "block";
+  window.localStorage.setItem('name', nameInputBoxEl);
 }
 
-function saveName(){
-  console.log("getting there");
-}
-
-// window.localStorage.setItem('name', 'Obaseki Nosa');
 
 
 // There are 25 questions
