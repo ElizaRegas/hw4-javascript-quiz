@@ -1,64 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- meta tags -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- title tag -->
     <title>Javascript Quiz</title>
-    <!-- bootstrap link -->
+    <!-- link tags -->
     <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Source+Code+Pro:wght@300;400;500&display=swap"
       rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
-      crossorigin="anonymous"
     />
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
 
   <body>
+    <!-- semantic element <main> -->
     <main>
-      <!-- start quiz container -->
-      <div class="container" style="border: 5px solid black;">
-        <nav class="navbar navbar-light bg-primary" id="startQuiz">
-          <a class="navbar-brand" href="#">Start Quiz</a>
-        </nav>
-      </div>
-      <!-- question and answer container-->
-      <div class="container" style="border: 5px solid black;">
-        <div id="quiz" style="display: block;">
-          <!-- question image -->
-          <div id="questionImage">
-            <img
-              src="./assets/images/lizpf2.jpg"
-              alt="question img"
-              style="width: 200px;"
-            />
+      <!-- semantic element <section> and score container -->
+      <section id="scoreContainer" style="display: none">
+        <!-- question and answer container-->
+        <div class="modalBox" id="quiz" style="display: none;">
+          <!-- show quiz progress -->
+          <div class="choice" id="statsBox">
+            <!-- counter -->
+            <div id="timer">
+              <span>Time: </span>
+              <span id="minutes">1</span>
+              <span> : </span>
+              <span id="seconds">00</span>
+              <span>||</span>
+              <span>Correct: 
+                <span id="correct"></span>
+              </span>
+              <span>||</span>
+              <span>Incorrect: 
+                <span id="incorrect"></span>
+              </span>   
+              <span>||</span>
+              <span>Score: 
+                <span id="score">60</span>
+              </span>               
+            </div>
           </div>
           <!-- question div -->
           <div>
-            <p id="question">Question</p>
-          </div>
-          <!-- timer div -->
-          <div id="timer" style="border: 5px solid black;">
-            <!-- counter -->
-            <span id="minutes">2</span>
-            <span> : </span>
-            <span id="seconds">00</span>
+            <p class="quizBoxStyle" id="question"></p>
           </div>
           <!-- answer choices -->
-          <div id="choices" style="border: 5px solid black;">
-            <div class="choice" id="A" onclick="checkAnswer('A')">A</div>
-            <div class="choice" id="B" onclick="checkAnswer('B')">B</div>
-            <div class="choice" id="C" onclick="checkAnswer('C')">C</div>
-          </div>
-          <!-- show quiz progress -->
-          <div id="progress" style="border: 5px solid black;>
-            <div class="prog"></div>
+          <div>
+            <div class="choice quizBoxStyle" id="A">A</div>
+            <div class="choice quizBoxStyle" id="B">B</div>
+            <div class="choice quizBoxStyle" id="C">C</div>
+            <div class="choice quizBoxStyle" id="D">D</div>
           </div>
         </div>
-      </div>
-      <!-- score container -->
-      <div id="scoreContainer" style="display: block;"></div>
+      </section>
     </main>
+
+    <!-- game modals -->
+    <!-- quiz modal -->
+    <div id="startQuiz" style="display: block;">
+      <div class="modalBox" id="modalBoxStartQuiz">
+        <a href="#" class="startEndText" id="startQuizText">Start Quiz</a>
+      </div>
+    </div>
+    <!-- correct modal -->
+    <div
+      class="modalBox correctIncorrectText"
+      id="correctModal"
+      style="display: none;"
+    >
+      Correct!
+    </div>
+    <!-- incorrect modal -->
+    <div
+      class="modalBox correctIncorrectText"
+      id="incorrectModal"
+      style="display: none;"
+    >
+      Incorrect.
+    </div>
+    <!-- game over modal -->
+    <div class="modalBox startEndText" id="gameOverModal" style="display: none;">
+      Game Over!
+      <input id="nameInputBox">
+        <div id="nameInputText">
+          Please enter your name
+        </div>
+      </input>
+    </div>
 
     <!-- js links -->
     <script

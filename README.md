@@ -44,10 +44,6 @@ You are required to submit the following for review:
 © 2019 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
 
 ---------------------------
-// Page loads
-// I click a button to start the game
-// A question appears
-// The counter starts
 // The counter can be paused, but then detracts 5 seconds
 // There is a 120 second max on timer
 // There are 25 questions
@@ -60,3 +56,5 @@ You are required to submit the following for review:
   // scores are updated
   // the next question is displayed 
 // At the end of the game, I can save my initials and score
+
+CREDIT W3 Schools for java script quiz

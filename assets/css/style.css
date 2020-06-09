@@ -1,3 +1,87 @@
-/* body {
-  color: white !important;
-} */
+html {
+  background: url(../images/codeBg4.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color: white;
+  font-family: "Source Code Pro", monospace;
+  font-weight: 200;
+  text-shadow: 1px 1px 0 #000;
+}
+
+.choice {
+  margin: auto;
+  text-align: justify;
+  font-size: 1.5vw !important;
+  padding: 1vw !important;
+  margin-bottom: 0.5vw;
+}
+
+.choice:hover {
+  box-shadow: inset 0px 0px 200px 3px white !important;
+  text-shadow: -1px -1px 0 #000;
+}
+
+.correctIncorrectText {
+  color: white;
+  font-weight: 400;
+  font-size: 7vw;
+  text-shadow: 10px 10px 15px #333;
+  text-align: center;
+}
+
+.modalBox {
+  border-radius: 10px;
+  background-color: #757083 !important;
+  border: 15px solid #5c76dc;
+  box-shadow: inset 0px 0px 5px 3px white, 20px 20px 20px #000;
+  padding: 10%;
+  margin: 10% 15% 20%;
+}
+
+.quizBoxStyle {
+  padding: 5% 5%;
+  font-size: 2vw;
+  font-weight: 400;
+  border: 8px solid #2f1987;
+  border-radius: 5px;
+  box-shadow: inset 0px 0px 30px 1px white;
+}
+
+.startEndText {
+  color: white;
+  font-weight: 600;
+  font-size: 7vw;
+  text-shadow: 10px 10px 15px #333;
+  text-align: center;
+}
+
+#nameInputBox {
+  font-size: 3vw;
+  width: 100%;
+  border: 5px solid black;
+  border-radius: 5px;
+}
+
+#nameInputText {
+  font-size: 2.5vw;
+  text-align: center;
+}
+
+#question {
+  width: 88.5%;
+}
+
+#quiz {
+  padding: 2% 4%;
+}
+
+#startQuiz {
+  text-align: center;
+  width: 100%;
+}
+
+#statsBox {
+  text-align: center;
+}
