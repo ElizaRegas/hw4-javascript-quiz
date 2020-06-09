@@ -15,7 +15,7 @@ html {
   text-align: justify;
   font-size: 1.5vw !important;
   padding: 1vw !important;
-  margin-bottom: .5vw;
+  margin-bottom: 0.5vw;
 }
 
 .choice:hover {
@@ -54,6 +54,19 @@ html {
   font-weight: 600;
   font-size: 7vw;
   text-shadow: 10px 10px 15px #333;
+  text-align: center;
+}
+
+#nameInputBox {
+  font-size: 3vw;
+  width: 100%;
+  border: 5px solid black;
+  border-radius: 5px;
+}
+
+#nameInputText {
+  font-size: 2.5vw;
+  text-align: center;
 }
 
 #question {
@@ -61,7 +74,7 @@ html {
 }
 
 #quiz {
-  padding: 2% 4% 15%;
+  padding: 2% 4%;
 }
 
 #startQuiz {

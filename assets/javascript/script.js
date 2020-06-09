@@ -211,6 +211,12 @@ function endGame() {
   gameOverModalEl.style.display = "block";
 }
 
+function saveName(){
+  console.log("getting there");
+}
+
+// window.localStorage.setItem('name', 'Obaseki Nosa');
+
 
 // There are 25 questions
 
