@@ -16,7 +16,9 @@ This javascript quiz was a homework assignment for the Georgia Tech Full Stack W
 To access the javascript quiz,
 [CLICK HERE](https://elizaregas.github.io/hw4-javascript-quiz/)
 
-![Password Generator](./assets/images/JSQuizScreenShot.png)
+![JS Quiz](./assets/images/JSQuizScreenShot.png)
+
+![JS Quiz](./assets/images/JSQuiz2.png)
 
 ## Credits
 
