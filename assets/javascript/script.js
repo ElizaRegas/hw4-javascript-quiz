@@ -1,3 +1,4 @@
+// global variables
 var startQuizEl = document.getElementById("startQuiz");
 var quizEl = document.getElementById("quiz");
 var questionEl = document.getElementById("question");
@@ -39,8 +40,8 @@ var questionsArr = [
     question: "Question #3: The external JavaScript file must contain the &ltscript&gt tag.",
     choiceA: "Answer A: True",
     choiceB: "Answer B: False",
-    choiceC: "Answer C: Either",
-    choiceD: "Answer D: It depends on the context",
+    choiceC: "Answer C: It depends on the context",
+    choiceD: "Answer D: Not a valid question",
     correct: "B",
   },
   {
@@ -110,6 +111,7 @@ var gameIsOver = false;
 
 // starting the game by clicking on Start Quiz
 startQuizEl.addEventListener("click", startGame);
+// adding an event listener to register when someone clicks on an answer
 document.addEventListener("click", checkAnswer);
 
 // generates question and starts timer
@@ -162,12 +164,15 @@ function updateTimerDisplay(secondsRemaining) {
     secondsRemaining = "0" + secondsRemaining;
   }
   secondsEl.innerText = secondsRemaining;
+  // updating the score in the dom
   scoreEl.innerText = secondsRemaining;
 }
 
 // checking the answer
 function checkAnswer(e) {
+  // if an answer box is clicked, check the answer
   if (e.target.className === "choice quizBoxStyle") {
+    // if the answer is correct:
     if (e.target.id === questionsArr[currentQuestionIndex].correct) {
       clearInterval(countDownTimer);
       hideQuizDivs();
@@ -176,7 +181,7 @@ function checkAnswer(e) {
       setTimeout(returnDisplay, 2000);
       counterStarts(secondsRemaining + 2);
     } 
-    
+    // if the answer is incorrect
     if (e.target.id !== questionsArr[currentQuestionIndex].correct) {
       clearInterval(countDownTimer);
       hideQuizDivs();
@@ -184,7 +189,7 @@ function checkAnswer(e) {
       incorrectEl.innerText++;
       setTimeout(returnDisplay, 2000);
       counterStarts(secondsRemaining - 8);
-      // console.log(secondsRemaining);
+      // code put in to avoid the counter going into negative numbers
       if (secondsRemaining < 0) {
         secondsRemaining = 0
         clearInterval(countDownTimer);
@@ -212,9 +217,10 @@ function endGame() {
   gameIsOver = true;
   quizEl.style.display = "none";
   gameOverModalEl.style.display = "block";
+  nameInputBoxEl.addEventListener("submit", function() {
+    var userName = nameInputBoxEl.value;
+    alert(userName); 
+  })
 }
 
-
-// scores are updated
-// the next question is displayed
 // At the end of the game, I can save my initials and score
