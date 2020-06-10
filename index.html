@@ -1,36 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- meta tags -->
+    <!-- META TAGS -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- title tag -->
+    <!-- TITLE TAG -->
     <title>Javascript Quiz</title>
-    <!-- link tags -->
+    <!-- LINK TAGS -->
+    <!-- GOOGLE FONTS -->
     <link
       href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Source+Code+Pro:wght@300;400;500&display=swap"
       rel="stylesheet"
     />
-    <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAA
-      AAAADGxsYAWFhYABwcHABfAP8A/9dfAADXrwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-      AAAAAAAAAAAAAAAAIiIiIiIiIiIjMlUkQgAiIiIiIiIiIiIiIzJVJEIAAAIiIiIiIiIiIiMyVSRC
-      AAIiIiIiIiIiIiIRERERERERERERERERERERIiIiIiIiIiIgACVVUiIiIiIiIiIiIiIiIAAlVVIi
-      IiIiIiIiIiIiIhEREREREREREREREREREREAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-      AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rel="icon" type="image/x-icon" 
+    <!-- LINK TO CORRECT UNKNOWN 404 FAVICON ERROR IN CONSOLE LOG -->
+    <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAADGxsYAWFhYABwcHABfAP8A/9dfAADXrwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIiIiIiIiIiIjMlUkQgAiIiIiIiIiIiIiIzJVJEIAAAIiIiIiIiIiIiMyVSRCAAIiIiIiIiIiIiIRERERERERERERERERERERIiIiIiIiIiIgACVVUiIiIiIiIiIiIiIiIAAlVVIiIiIiIiIiIiIiIhEREREREREREREREREREREAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rel="icon" type="image/x-icon" 
     />
+    <!-- LOCAL STYLE SHEET -->
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
 
   <body>
-    <!-- semantic element <main> -->
+    <!-- SEMANTIC ELEMENT <MAIN> -->
     <main>
-      <!-- semantic element <section> and score container -->
+      <!-- SEMANTIC ELEMENT <SECTION> -->
       <section id="scoreContainer" style="display: none">
-        <!-- question and answer container-->
+        <!-- QUIZ CONTAINER -->
         <div class="modalBox" id="quiz" style="display: none;">
-          <!-- show quiz progress -->
+          <!-- SHOW QUIZ PROGRESS AND STATS -->
           <div class="choice" id="statsBox">
-            <!-- counter -->
+            <!-- COUNTER -->
             <div id="timer">
               <span>Time: </span>
               <span id="minutes">1</span>
@@ -50,11 +48,11 @@
               </span>               
             </div>
           </div>
-          <!-- question div -->
+          <!-- QUESTION DIV -->
           <div>
             <p class="quizBoxStyle" id="question"></p>
           </div>
-          <!-- answer choices -->
+          <!-- ANSWER CHOICES -->
           <div>
             <div class="choice quizBoxStyle" id="A">A</div>
             <div class="choice quizBoxStyle" id="B">B</div>
@@ -65,14 +63,14 @@
       </section>
     </main>
 
-    <!-- game modals -->
-    <!-- quiz modal -->
+    <!-- GAME MODALS -->
+    <!-- QUIZ MODALS -->
     <div id="startQuiz" style="display: block;">
       <div class="modalBox" id="modalBoxStartQuiz">
         <a href="#" class="startEndText" id="startQuizText">Start Quiz</a>
       </div>
     </div>
-    <!-- correct modal -->
+    <!-- CORRECT MODAL -->
     <div
       class="modalBox correctIncorrectText"
       id="correctModal"
@@ -80,7 +78,7 @@
     >
       Correct!
     </div>
-    <!-- incorrect modal -->
+    <!-- INCORRECT MODAL -->
     <div
       class="modalBox correctIncorrectText"
       id="incorrectModal"
@@ -88,7 +86,7 @@
     >
       Incorrect.
     </div>
-    <!-- game over modal -->
+    <!-- GAME OVER MODAL -->
     <div class="modalBox startEndText" id="gameOverModal" style="display: none;">
       Game Over!
       <input type="text" id="nameInputBox">
@@ -98,22 +96,7 @@
       </input>
     </div>
 
-    <!-- js links -->
-    <script
-      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-      crossorigin="anonymous"
-    ></script>
+    <!-- JS LINK -->
     <script type="text/javascript" src="./assets/scripts/script.js"></script>
   </body>
 </html>
