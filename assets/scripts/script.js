@@ -18,6 +18,7 @@ var correctEl = document.getElementById("correct");
 var incorrectEl = document.getElementById("incorrect");
 var scoreEl = document.getElementById("score");
 var nameInputBoxEl = document.getElementById("nameInputBox");
+var highScoreEl = document.getElementById("highScore");
 
 var questionsArr = [
   {
@@ -223,17 +224,32 @@ function endGame() {
   })
 }
 
-function displayHighScores(){
-  Object.entries(localStorage).map(function(entry){
-    console.log(entry[0]);
-    console.log(entry[1]);
+function displayHighScore(){
+  var scores = Object.entries(localStorage).map(function(keyValuePair){
+    return parseInt(keyValuePair[1]);
+  });
+  console.log(scores);
+  var highScore = Math.max(...scores);
+  console.log(highScore);
+  // TESTING WHETHER OR NOT A USER HAS THE HIGH SCORE
+  var usersWithHighScore = Object.entries(localStorage).map(function(keyValuePair){
+    var score = parseInt(keyValuePair[1]);
+    var user = keyValuePair[0];
+    if (score === highScore) {
+      return user;
+    } 
+  })
+  usersWithHighScore = usersWithHighScore.filter(function(item){
+    return item !== undefined;
   })
 }
 
-// displayHighScores();
-
 // At the end of the game, I can save my initials and score
 document.getElementById("submitButton").addEventListener("click", function(){
-  var userInput = document.getElementById("nameInputBox").value;
-  window.localStorage.setItem(userInput, scoreEl.innerText);
+  var userName = document.getElementById("nameInputBox").value;
+  var userScore = window.localStorage.getItem(userName) || "0";
+  if (parseInt(userScore) < parseInt(scoreEl.innerText)){
+    window.localStorage.setItem(userName, scoreEl.innerText);
+  }
+  displayHighScore();
 })
