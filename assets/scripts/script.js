@@ -139,8 +139,6 @@ function showQuizDiv() {
 // DISPLAY THE CURRENT QUESTION
 function displayQuestion() {
   currentQuestionIndex++;
-  console.log(currentQuestionIndex);
-  console.log(questionsArr.length);
   if (currentQuestionIndex === questionsArr.length) {
     setTimeout(endGame, 2000);
   } else {
@@ -258,9 +256,7 @@ function displayHighScore() {
   });
   gameOverModalEl.style.display = "none";
   congratsModalEl.style.display = "block";
-  congratsModalEl.innerText = "Way to go, " + userName + "! \rYour final score was " + userScore + "! \rThe current reigning champion is " + usersWithHighScore + " with a score of " + highScore + ".";
-  console.log(usersWithHighScore);
-  console.log(highScore);
+  congratsModalEl.innerText = "Way to go, " + userName + "! \rYour final score was " + userScore + "! \r\rThe current reigning champion is " + usersWithHighScore + " with a score of " + highScore + ".";
 }
 
 //EVENT LISTENERS
