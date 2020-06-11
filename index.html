@@ -23,9 +23,9 @@
     <!-- SEMANTIC ELEMENT <MAIN> -->
     <main>
       <!-- SEMANTIC ELEMENT <SECTION> -->
-      <section id="scoreContainer" style="display: none">
+      <section id="scoreContainer">
         <!-- QUIZ CONTAINER -->
-        <div class="modalBox" id="quiz" style="display: none;">
+        <div class="modalBox" id="quiz">
           <!-- SHOW QUIZ PROGRESS AND STATS -->
           <div class="choice" id="statsBox">
             <!-- COUNTER -->
@@ -65,16 +65,16 @@
 
     <!-- GAME MODALS -->
     <!-- QUIZ MODALS -->
-    <div id="startQuiz" style="display: block;">
+    <div id="startQuiz">
       <div class="modalBox" id="modalBoxStartQuiz">
         <a href="#" class="startEndText" id="startQuizText">Start Quiz</a>
+        <div id="highScores"></div>
       </div>
     </div>
     <!-- CORRECT MODAL -->
     <div
       class="modalBox correctIncorrectText"
       id="correctModal"
-      style="display: none;"
     >
       Correct!
     </div>
@@ -82,18 +82,18 @@
     <div
       class="modalBox correctIncorrectText"
       id="incorrectModal"
-      style="display: none;"
     >
       Incorrect.
     </div>
     <!-- GAME OVER MODAL -->
-    <div class="modalBox startEndText" id="gameOverModal" style="display: none;">
+    <div class="modalBox startEndText" id="gameOverModal">
       Game Over!
       <input type="text" id="nameInputBox">
         <div id="nameInputText">
           Please enter your name
         </div>
       </input>
+      <button id="submitButton">Submit</button>
     </div>
 
     <!-- JS LINK -->

@@ -193,7 +193,7 @@ function checkAnswer(e) {
       if (secondsRemaining < 0) {
         secondsRemaining = 0
         clearInterval(countDownTimer);
-        endGame();
+        setTimeout(endGame, 2000);
       } 
     }
     displayQuestion();
@@ -223,4 +223,17 @@ function endGame() {
   })
 }
 
+function displayHighScores(){
+  Object.entries(localStorage).map(function(entry){
+    console.log(entry[0]);
+    console.log(entry[1]);
+  })
+}
+
+// displayHighScores();
+
 // At the end of the game, I can save my initials and score
+document.getElementById("submitButton").addEventListener("click", function(){
+  var userInput = document.getElementById("nameInputBox").value;
+  window.localStorage.setItem(userInput, scoreEl.innerText);
+})
