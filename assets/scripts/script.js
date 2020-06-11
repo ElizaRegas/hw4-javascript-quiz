@@ -256,7 +256,7 @@ function displayHighScore() {
   });
   gameOverModalEl.style.display = "none";
   congratsModalEl.style.display = "block";
-  congratsModalEl.innerText = "Way to go, " + userName + "! \rYour final score was " + userScore + "! \r\rThe current reigning champion is " + usersWithHighScore + " with a score of " + highScore + ".";
+  congratsModalEl.innerText = "Way to go, " + userName + "! \rYour final score was " + scoreEl.innerText + "! \r\rThe current reigning champion is " + usersWithHighScore + " with a score of " + highScore + ".";
 }
 
 //EVENT LISTENERS
