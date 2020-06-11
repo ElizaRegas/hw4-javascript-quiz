@@ -96,5 +96,10 @@ html {
 }
 
 #statsBox {
-  text-align: center;
+  text-align: center !important;
+  margin: auto;
+  text-align: justify;
+  font-size: 1.5vw !important;
+  padding: 1vw !important;
+  margin-bottom: 0.5vw;
 }

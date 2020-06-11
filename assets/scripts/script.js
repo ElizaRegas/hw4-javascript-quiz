@@ -1,4 +1,4 @@
-// global variables
+// GLOBAL VARIABLES
 var startQuizEl = document.getElementById("startQuiz");
 var quizEl = document.getElementById("quiz");
 var questionEl = document.getElementById("question");
@@ -110,19 +110,20 @@ var countDownTimer;
 var secondsRemaining;
 var gameIsOver = false;
 
-// starting the game by clicking on Start Quiz
+// START THE GAME ON CLICK
 startQuizEl.addEventListener("click", startGame);
-// adding an event listener to register when someone clicks on an answer
+
+// CHECK THE ANSWER ON CLICK
 document.addEventListener("click", checkAnswer);
 
-// generates question and starts timer
+// GENERATE THE QUESTION AND START THE TIMER AND SCORE
 function startGame() {
   showQuizDiv();
   displayQuestion();
   counterStarts(59);
 }
 
-// display quiz div
+// HIDE ALL MODALS EXCEPT QUIZ DIV
 function showQuizDiv() {
   correctEl.innerText = 0;
   incorrectEl.innerText = 0;
@@ -131,7 +132,7 @@ function showQuizDiv() {
   quizEl.style.display = "block";
 }
 
-// display question
+// DISPLAY THE CURRENT QUESTION
 function displayQuestion() {
   currentQuestionIndex++;
   var quest = questionsArr[currentQuestionIndex];
@@ -142,7 +143,7 @@ function displayQuestion() {
   choiceDEl.innerHTML = quest.choiceD;
 }
 
-//starting the clock
+// START THE CLOCK
 function counterStarts(sec){
   secondsRemaining = sec;
 
@@ -158,22 +159,22 @@ function counterStarts(sec){
 
 }
 
-// updating clock display in the dom
+// UPDATE THE CLOCK DISPLAY IN THE DOM
 function updateTimerDisplay(secondsRemaining) {
   minutesEl.innerText = Math.floor(secondsRemaining / 60);
   if (secondsRemaining < 10) {
     secondsRemaining = "0" + secondsRemaining;
   }
   secondsEl.innerText = secondsRemaining;
-  // updating the score in the dom
+  // UPDATE THE SCORE IN THE DOM
   scoreEl.innerText = secondsRemaining;
 }
 
-// checking the answer
+// CHECK THE ANSWER
 function checkAnswer(e) {
-  // if an answer box is clicked, check the answer
+  // COMPARE CLICKED ANSWER TO RIGHT ANSWER
   if (e.target.className === "choice quizBoxStyle") {
-    // if the answer is correct:
+    // IF THE ANSWER IS CORRECT:
     if (e.target.id === questionsArr[currentQuestionIndex].correct) {
       clearInterval(countDownTimer);
       hideQuizDivs();
@@ -182,7 +183,7 @@ function checkAnswer(e) {
       setTimeout(returnDisplay, 2000);
       counterStarts(secondsRemaining + 2);
     } 
-    // if the answer is incorrect
+    // IF THE ANSWER IS INCORRECT
     if (e.target.id !== questionsArr[currentQuestionIndex].correct) {
       clearInterval(countDownTimer);
       hideQuizDivs();
@@ -190,7 +191,7 @@ function checkAnswer(e) {
       incorrectEl.innerText++;
       setTimeout(returnDisplay, 2000);
       counterStarts(secondsRemaining - 8);
-      // code put in to avoid the counter going into negative numbers
+      // CODE TO SOLVE THE BUG OF COUNTER GOING INTO NEGATIVE NUMBERS
       if (secondsRemaining < 0) {
         secondsRemaining = 0
         clearInterval(countDownTimer);
@@ -201,10 +202,12 @@ function checkAnswer(e) {
   }
 }
 
+// HIDE THE QUIZ DIV
 function hideQuizDivs() {
   quizEl.style.display = "none";
 }
 
+// RETURN THE QUIZ DIV IF THE GAME ISN'T OVER
 function returnDisplay() {
   if (gameIsOver === false) {
     quizEl.style.display = "block";
@@ -213,18 +216,20 @@ function returnDisplay() {
   incorrectAnswerEl.style.display = "none";
 }
 
-// end game modal call
+// END THE GAME AND DISPLAY END GAME MODAL
 function endGame() {
   gameIsOver = true;
   quizEl.style.display = "none";
   gameOverModalEl.style.display = "block";
   nameInputBoxEl.addEventListener("submit", function() {
     var userName = nameInputBoxEl.value;
-    alert(userName); 
+    console.log(userName); 
   })
 }
 
+// 
 function displayHighScore(){
+  // .ENTRIES AND .MAP ACTING AS FOR LOOPS TO RETURN ALL SCORES FROM THE STORED KEY VALUE PAIR
   var scores = Object.entries(localStorage).map(function(keyValuePair){
     return parseInt(keyValuePair[1]);
   });
