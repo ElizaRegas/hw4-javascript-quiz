@@ -19,10 +19,12 @@ var incorrectEl = document.getElementById("incorrect");
 var scoreEl = document.getElementById("score");
 var nameInputBoxEl = document.getElementById("nameInputBox");
 var highScoreEl = document.getElementById("highScore");
+var congratsModalEl = document.getElementById("congratsModal");
 
 var questionsArr = [
   {
-    question: "Question #1: Inside which HTML element do we put the JavaScript?",
+    question:
+      "Question #1: Inside which HTML element do we put the JavaScript?",
     choiceA: "Answer A: &ltscripting&gt",
     choiceB: "Answer B: &ltscript&gt",
     choiceC: "Answer C: &ltjavascript&gt",
@@ -30,7 +32,8 @@ var questionsArr = [
     correct: "B",
   },
   {
-    question: "Question #2: Where is the correct place to insert the Javascript &ltscript&gt tag?",
+    question:
+      "Question #2: Where is the correct place to insert the Javascript &ltscript&gt tag?",
     choiceA: "Answer A: The &lthead&gt section",
     choiceB: "Answer B: The &ltbody&gt section",
     choiceC: "Answer C: Either the &lthead&gt section or &ltbody&gt section",
@@ -38,7 +41,8 @@ var questionsArr = [
     correct: "C",
   },
   {
-    question: "Question #3: The external JavaScript file must contain the &ltscript&gt tag.",
+    question:
+      "Question #3: The external JavaScript file must contain the &ltscript&gt tag.",
     choiceA: "Answer A: True",
     choiceB: "Answer B: False",
     choiceC: "Answer C: It depends on the context",
@@ -46,19 +50,20 @@ var questionsArr = [
     correct: "B",
   },
   {
-    question: "Question #4: What is the correct syntax for referring to an external script called \"xxx.js\"?",
-    choiceA: "Answer A: &ltscript type=\"xxx.js\"&gt",
-    choiceB: "Answer B: &ltscript href=\"xxx.js\"&gt",
-    choiceC: "Answer C: &ltscript name=\"xxx.js\"&gt",
-    choiceD: "Answer D: &ltscript src=\"xxx.js\"&gt",
+    question:
+      'Question #4: What is the correct syntax for referring to an external script called "xxx.js"?',
+    choiceA: 'Answer A: &ltscript type="xxx.js"&gt',
+    choiceB: 'Answer B: &ltscript href="xxx.js"&gt',
+    choiceC: 'Answer C: &ltscript name="xxx.js"&gt',
+    choiceD: 'Answer D: &ltscript src="xxx.js"&gt',
     correct: "D",
   },
   {
-    question: "Question #5: How do you write \"Hello World\" in an alert box?",
-    choiceA: "Answer A: alert(\"Hello World\");",
-    choiceB: "Answer B: msgBox(\"Hello World\");",
-    choiceC: "Answer C: alertBox(\"Hello World\");",
-    choiceD: "Answer D: msg(\"Hello World\");",
+    question: 'Question #5: How do you write "Hello World" in an alert box?',
+    choiceA: 'Answer A: alert("Hello World");',
+    choiceB: 'Answer B: msgBox("Hello World");',
+    choiceC: 'Answer C: alertBox("Hello World");',
+    choiceD: 'Answer D: msg("Hello World");',
     correct: "A",
   },
   {
@@ -78,15 +83,17 @@ var questionsArr = [
     correct: "C",
   },
   {
-    question: "Question #8: What is the correct way to write a JavaScript array?",
-    choiceA: "Answer A: var colors = [\"red\", \"green\", \"blue\"]",
-    choiceB: "Answer B: var colors = 1 = (\"red\"), 2 = (\"green\"), 3 = (\"blue\")",
-    choiceC: "Answer C: var colors = (1:\"red\", 2:\"green\", 3:\"blue\")",
-    choiceD: "Answer D: var colors = \"red\", \"green\", \"blue\"",
-    correct: "D",
+    question:
+      "Question #8: What is the correct way to write a JavaScript array?",
+    choiceA: 'Answer A: var colors = ["red", "green", "blue"]',
+    choiceB: 'Answer B: var colors = 1 = ("red"), 2 = ("green"), 3 = ("blue")',
+    choiceC: 'Answer C: var colors = (1:"red", 2:"green", 3:"blue")',
+    choiceD: 'Answer D: var colors = "red", "green", "blue"',
+    correct: "A",
   },
   {
-    question: "Question #9: How do you round the number 7.25, to the nearest integer?",
+    question:
+      "Question #9: How do you round the number 7.25, to the nearest integer?",
     choiceA: "Answer A: Math.rnd(7.25)",
     choiceB: "Answer B: Math.round(7.25)",
     choiceC: "Answer C: round(7.25)",
@@ -94,7 +101,8 @@ var questionsArr = [
     correct: "B",
   },
   {
-    question: "Question #10: Which event occurs when the user clicks on an HTML element?",
+    question:
+      "Question #10: Which event occurs when the user clicks on an HTML element?",
     choiceA: "Answer A: onclick",
     choiceB: "Answer B: onmouseclick",
     choiceC: "Answer C: onchange",
@@ -109,12 +117,8 @@ var totalSecondsRemaining;
 var countDownTimer;
 var secondsRemaining;
 var gameIsOver = false;
-
-// START THE GAME ON CLICK
-startQuizEl.addEventListener("click", startGame);
-
-// CHECK THE ANSWER ON CLICK
-document.addEventListener("click", checkAnswer);
+var userName;
+var userScore;
 
 // GENERATE THE QUESTION AND START THE TIMER AND SCORE
 function startGame() {
@@ -135,19 +139,25 @@ function showQuizDiv() {
 // DISPLAY THE CURRENT QUESTION
 function displayQuestion() {
   currentQuestionIndex++;
-  var quest = questionsArr[currentQuestionIndex];
-  question.innerHTML = quest.question;
-  choiceAEl.innerHTML = quest.choiceA;
-  choiceBEl.innerHTML = quest.choiceB;
-  choiceCEl.innerHTML = quest.choiceC;
-  choiceDEl.innerHTML = quest.choiceD;
+  console.log(currentQuestionIndex);
+  console.log(questionsArr.length);
+  if (currentQuestionIndex === questionsArr.length) {
+    setTimeout(endGame, 2000);
+  } else {
+    var quest = questionsArr[currentQuestionIndex];
+    question.innerHTML = quest.question;
+    choiceAEl.innerHTML = quest.choiceA;
+    choiceBEl.innerHTML = quest.choiceB;
+    choiceCEl.innerHTML = quest.choiceC;
+    choiceDEl.innerHTML = quest.choiceD;
+  }
 }
 
 // START THE CLOCK
-function counterStarts(sec){
+function counterStarts(sec) {
   secondsRemaining = sec;
 
-  countDownTimer = setInterval(function() {
+  countDownTimer = setInterval(function () {
     updateTimerDisplay(secondsRemaining);
     if (secondsRemaining === 0) {
       clearInterval(countDownTimer);
@@ -156,7 +166,6 @@ function counterStarts(sec){
       secondsRemaining--;
     }
   }, 1000);
-
 }
 
 // UPDATE THE CLOCK DISPLAY IN THE DOM
@@ -178,11 +187,11 @@ function checkAnswer(e) {
     if (e.target.id === questionsArr[currentQuestionIndex].correct) {
       clearInterval(countDownTimer);
       hideQuizDivs();
-      correctAnswerEl.style.display = "block";   
+      correctAnswerEl.style.display = "block";
       correctEl.innerText++;
       setTimeout(returnDisplay, 2000);
       counterStarts(secondsRemaining + 2);
-    } 
+    }
     // IF THE ANSWER IS INCORRECT
     if (e.target.id !== questionsArr[currentQuestionIndex].correct) {
       clearInterval(countDownTimer);
@@ -193,10 +202,10 @@ function checkAnswer(e) {
       counterStarts(secondsRemaining - 8);
       // CODE TO SOLVE THE BUG OF COUNTER GOING INTO NEGATIVE NUMBERS
       if (secondsRemaining < 0) {
-        secondsRemaining = 0
+        secondsRemaining = 0;
         clearInterval(countDownTimer);
         setTimeout(endGame, 2000);
-      } 
+      }
     }
     displayQuestion();
   }
@@ -221,40 +230,52 @@ function endGame() {
   gameIsOver = true;
   quizEl.style.display = "none";
   gameOverModalEl.style.display = "block";
-  nameInputBoxEl.addEventListener("submit", function() {
-    var userName = nameInputBoxEl.value;
-    console.log(userName); 
-  })
 }
 
-// 
-function displayHighScore(){
-  // .ENTRIES AND .MAP ACTING AS FOR LOOPS TO RETURN ALL SCORES FROM THE STORED KEY VALUE PAIR
-  var scores = Object.entries(localStorage).map(function(keyValuePair){
+//
+function displayHighScore() {
+  var user;
+  var score;
+  // .ENTRIES() AND .MAP() ACTING AS FOR LOOPS TO RETURN ALL SCORES FROM THE STORED KEY VALUE PAIR
+  var scores = Object.entries(localStorage).map(function (keyValuePair) {
     return parseInt(keyValuePair[1]);
   });
-  console.log(scores);
+  // FIND THE HIGHEST NUMBER IN THE ARRAY OF SCORES
   var highScore = Math.max(...scores);
-  console.log(highScore);
-  // TESTING WHETHER OR NOT A USER HAS THE HIGH SCORE
-  var usersWithHighScore = Object.entries(localStorage).map(function(keyValuePair){
-    var score = parseInt(keyValuePair[1]);
-    var user = keyValuePair[0];
+  // TESTING WHETHER OR NOT THE CURRENT USER HAS THE HIGH SCORE
+  var usersWithHighScore = Object.entries(localStorage).map(function (
+    keyValuePair
+  ) {
+    score = parseInt(keyValuePair[1]);
+    user = keyValuePair[0];
     if (score === highScore) {
       return user;
-    } 
-  })
-  usersWithHighScore = usersWithHighScore.filter(function(item){
+    }
+  });
+  // FILTERS THE USER ARRAY AND GETS RID OF ANY RETURNS OF UNDEFINED
+  usersWithHighScore = usersWithHighScore.filter(function (item) {
     return item !== undefined;
-  })
+  });
+  gameOverModalEl.style.display = "none";
+  congratsModalEl.style.display = "block";
+  congratsModalEl.innerText = "Way to go, " + userName + "! \rYour final score was " + userScore + "! \rThe current reigning champion is " + usersWithHighScore + " with a score of " + highScore + ".";
+  console.log(usersWithHighScore);
+  console.log(highScore);
 }
 
-// At the end of the game, I can save my initials and score
-document.getElementById("submitButton").addEventListener("click", function(){
-  var userName = document.getElementById("nameInputBox").value;
-  var userScore = window.localStorage.getItem(userName) || "0";
-  if (parseInt(userScore) < parseInt(scoreEl.innerText)){
+//EVENT LISTENERS
+// START THE GAME ON CLICK
+startQuizEl.addEventListener("click", startGame);
+
+// CHECK THE ANSWER ON CLICK
+document.addEventListener("click", checkAnswer);
+
+// SAVES THE SCORES AND INITIALS
+document.getElementById("submitButton").addEventListener("click", function () {
+  userName = document.getElementById("nameInputBox").value;
+  userScore = window.localStorage.getItem(userName) || "0";
+  if (parseInt(userScore) < parseInt(scoreEl.innerText)) {
     window.localStorage.setItem(userName, scoreEl.innerText);
   }
   displayHighScore();
-})
+});
