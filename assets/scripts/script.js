@@ -230,7 +230,7 @@ function endGame() {
   gameOverModalEl.style.display = "block";
 }
 
-//
+// FUNCTION TO DISPLAY HIGH SCORE WRITTEN WITH HELP FROM MY TRILOGY TUTOR, MANNY SALCIDO
 function displayHighScore() {
   var user;
   var score;
